@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mashael Alghamdi | Portfolio</title>
+    <meta name="description" content="Personal portfolio of Mashael Alghamdi, Computer Science student.">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar">
+    <div class="container nav-content">
+        <div class="logo">Mashael</div>
+        
+        <!-- Navigation links -->
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <!-- Dark mode toggle button -->
+        <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </div>
+</nav>
+
+<!-- Hero section -->
+<header class="hero">
+    <div class="container hero-content">
+        <h1>Mashael Alghamdi</h1>
+        <p class="subtitle">Computer Science Student</p>
+        <p class="description">
+            Building clean, structured, and user-focused digital experiences.
+        </p>
+    </div>
+</header>
+
+<!-- Section divider for visual separation -->
+<div class="section-divider"></div>
+
+<!-- About section -->
+<section id="about" class="section">
+    <div class="container narrow">
+        <h2>About Me</h2>
+        <p>
+            A Computer Science student who enjoys building websites and 
+            learning new technologies. I like creating simple and useful 
+            projects while improving my skills step by step.
+        </p>
+        <p class="tagline">Progress over perfection.</p>
+    </div>
+</section>
+
+<!-- Projects section -->
+<section id="projects" class="section alt-section">
+    <div class="container">
+        <h2>Projects</h2>
+
+        <!-- Project card 1 -->
+        <div class="project-card">
+            <img src="assets/images/project1.jpg" alt="Database Project" class="project-img" loading="lazy">
+            <div class="project-content">
+                <h3>Database Management System</h3>
+                <p>
+                    Designed and implemented a relational database system focusing
+                    on normalization, efficient schema design, and optimized SQL queries.
+                </p>
+            </div>
+        </div>
+
+        <!-- Project card 2 -->
+        <div class="project-card">
+            <img src="assets/images/project2.jpg" alt="Traffic Light Controller" class="project-img" loading="lazy">
+            <div class="project-content">
+                <h3>Smart Traffic Light Controller</h3>
+                <p>
+                    Developed a finite state machine-based controller ensuring
+                    correct state transitions and timing validation.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Contact section -->
+<section id="contact" class="section">
+    <div class="container narrow">
+        <h2>Contact</h2>
+
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <!-- Success message displayed via JavaScript -->
+        <p id="form-message" class="form-message"></p>
+    </div>
+</section>
+
+<!-- Main JavaScript file -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
