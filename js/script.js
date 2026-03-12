@@ -11,117 +11,135 @@ const container = document.querySelector(".projects-wrapper");
 const form = document.getElementById("contact-form");
 const formMessage = document.getElementById("form-message");
 
-/* Dark Mode */
+/* ---------------- DARK MODE ---------------- */
 
 const savedTheme = localStorage.getItem("theme");
 
-if(savedTheme==="dark"){
+if (savedTheme === "dark") {
 body.classList.add("dark");
-toggleBtn.textContent="☀️";
+toggleBtn.textContent = "☀️";
 }
 
-toggleBtn.addEventListener("click",()=>{
+toggleBtn.addEventListener("click", () => {
 
 body.classList.toggle("dark");
 
 const isDark = body.classList.contains("dark");
 
-toggleBtn.textContent = isDark ? "☀️":"🌙";
+toggleBtn.textContent = isDark ? "☀️" : "🌙";
 
-localStorage.setItem("theme",isDark?"dark":"light");
+localStorage.setItem("theme", isDark ? "dark" : "light");
 
 });
 
-/* Greeting (2.5 seconds) */
+/* ---------------- GREETING ---------------- */
 
 const hour = new Date().getHours();
 
-let message="";
+let message = "";
 
-if(hour<12){message="Good Morning";}
-else if(hour<18){message="Good Afternoon";}
-else{message="Good Evening";}
+if (hour < 12) {
+message = "Good Morning";
+}
+else if (hour < 18) {
+message = "Good Afternoon";
+}
+else {
+message = "Good Evening";
+}
 
-greeting.textContent=message;
+greeting.textContent = message;
 
-setTimeout(()=>{
-greeting.style.opacity="1";
-},200);
+setTimeout(() => {
+greeting.style.opacity = "1";
+}, 200);
 
-setTimeout(()=>{
-greeting.style.opacity="0";
-},2500);
+setTimeout(() => {
+greeting.style.opacity = "0";
+}, 2500);
 
-/* Instant project filtering */
+/* ---------------- PROJECT SEARCH ---------------- */
 
-searchInput.addEventListener("input",()=>{
+searchInput.addEventListener("input", () => {
 
 const value = searchInput.value.toLowerCase();
 
-cards.forEach(card=>{
+cards.forEach(card => {
 
 const title = card.querySelector("h3").textContent.toLowerCase();
 
-if(title.startsWith(value)){
-card.style.display="flex";
-}else{
-card.style.display="none";
+if (title.startsWith(value)) {
+card.style.display = "flex";
+} else {
+card.style.display = "none";
 }
 
 });
 
 });
 
-/* Sorting */
+/* ---------------- PROJECT SORT ---------------- */
 
-sortSelect.addEventListener("change",()=>{
+sortSelect.addEventListener("change", () => {
 
-const arr=[...cards];
+const arr = [...cards];
 
-arr.sort((a,b)=>{
+arr.sort((a, b) => {
 
-const A=a.querySelector("h3").textContent.toLowerCase();
-const B=b.querySelector("h3").textContent.toLowerCase();
+const A = a.querySelector("h3").textContent.toLowerCase();
+const B = b.querySelector("h3").textContent.toLowerCase();
 
-if(sortSelect.value==="az"){return A.localeCompare(B);}
-if(sortSelect.value==="za"){return B.localeCompare(A);}
+if (sortSelect.value === "az") {
+return A.localeCompare(B);
+}
+
+if (sortSelect.value === "za") {
+return B.localeCompare(A);
+}
+
 return 0;
 
 });
 
-arr.forEach(card=>container.appendChild(card));
+arr.forEach(card => container.appendChild(card));
 
 });
 
-/* Professional project expand */
+/* ---------------- PROJECT EXPAND ---------------- */
 
-titles.forEach(title=>{
+titles.forEach(title => {
 
-title.addEventListener("click",()=>{
+title.addEventListener("click", () => {
 
 const card = title.closest(".project-card");
 const desc = card.querySelector(".project-description");
 
-/* close other open projects */
+/* Close other cards */
 
-document.querySelectorAll(".project-card").forEach(otherCard=>{
+document.querySelectorAll(".project-card").forEach(otherCard => {
 
-if(otherCard!==card){
+if (otherCard !== card) {
+
 otherCard.classList.remove("open");
 
 const otherDesc = otherCard.querySelector(".project-description");
-otherDesc.style.maxHeight=null;
+
+if (otherDesc) {
+otherDesc.style.maxHeight = null;
+}
+
 }
 
 });
 
-/* toggle current */
+/* Toggle current */
 
 card.classList.toggle("open");
 
-if(card.classList.contains("open")){
+if (card.classList.contains("open")) {
 desc.style.maxHeight = desc.scrollHeight + "px";
-}else{
+}
+else {
 desc.style.maxHeight = null;
 }
 
@@ -129,19 +147,54 @@ desc.style.maxHeight = null;
 
 });
 
-/* Contact form */
+/* ---------------- CONTACT FORM VALIDATION ---------------- */
 
-form.addEventListener("submit",(e)=>{
+form.addEventListener("submit", (e) => {
 
 e.preventDefault();
 
-formMessage.textContent="Message sent successfully.";
+const name = form.querySelector("input[name='name']");
+const email = form.querySelector("input[name='email']");
+const message = form.querySelector("textarea[name='message']");
+
+/* Validation */
+
+if (!name.value || !email.value || !message.value) {
+
+formMessage.style.color = "red";
+formMessage.textContent = "Please fill in all fields.";
+
+return;
+
+}
+
+/* Email validation */
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email.value)) {
+
+formMessage.style.color = "red";
+formMessage.textContent = "Please enter a valid email address.";
+
+return;
+
+}
+
+/* Success */
+
+formMessage.style.color = "green";
+formMessage.textContent = "Message sent successfully.";
 
 form.reset();
 
-setTimeout(()=>{
-formMessage.textContent="";
-},1500);
+/* Clear message */
+
+setTimeout(() => {
+
+formMessage.textContent = "";
+
+}, 2000);
 
 });
 
