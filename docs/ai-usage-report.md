@@ -11,7 +11,7 @@ These tools were used as supporting resources to assist with debugging, understa
 
 ---
 
-## 2. How AI Was Used (Use Cases)
+## 2. How AI Was Used 
 
 AI was used during several stages of development to support problem solving and code refinement.
 
@@ -40,20 +40,8 @@ AI also helped provide suggestions for improving the user interface and interact
 
 ---
 
-## 4. Challenges and Limitations
 
-Some AI-generated suggestions required adjustment before they could be used in the project.
-
-For example:
-
-- Certain styling suggestions needed modification to match the visual theme of the portfolio.
-- Some code examples had to be adapted to fit the existing HTML structure.
-
-All suggestions were tested and modified when necessary to ensure they worked correctly within the project.
-
----
-
-## 5. Learning Outcomes
+## 4. Learning Outcomes
 
 Through using AI tools during this project, several concepts became clearer.
 
@@ -69,7 +57,7 @@ These experiences helped strengthen both front-end development skills and proble
 
 ---
 
-## 6. Responsible Use and Modifications
+## 5. Responsible Use and Modifications
 
 All AI-generated suggestions were carefully reviewed before being integrated into the project.
 
@@ -81,7 +69,7 @@ AI was used as a learning assistant rather than a direct replacement for the dev
 
 ---
 
-## 7. Innovative Use of AI
+## 6. Innovative Use of AI
 
 AI was used not only for generating code suggestions but also as a decision-support tool during development.
 

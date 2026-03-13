@@ -3,109 +3,233 @@
 ## 1. Overview
 
 This project is a static personal portfolio website developed using **HTML, CSS, and JavaScript**.  
-The purpose of the project is to demonstrate foundational front-end development skills including structured layout design, responsive styling, and interactive user interface elements.
+The goal of the project is to demonstrate foundational front-end development skills including semantic structure, responsive layout design, and interactive user interface behavior.
 
-The website presents personal information, showcases academic projects, and includes several interactive features implemented with JavaScript such as theme switching, project filtering, and dynamic data loading.
+The website presents personal information, showcases academic projects, and implements several interactive features using JavaScript. These features include theme switching, project filtering, sorting, expandable project descriptions, form validation, and dynamic data loading from an external API.
+
+The project focuses on building a clean and user-friendly interface without relying on external frameworks.
 
 ---
 
 ## 2. Technologies Used
 
-- **HTML** – Provides the semantic structure of the website and organizes content into sections.
-- **CSS** – Handles layout design, styling, responsive behavior, and visual effects such as hover animations and theme variations.
-- **JavaScript** – Adds interactivity to the website including dark mode functionality, project searching and sorting, expandable project cards, form validation, and API data retrieval.
-- **Wikipedia REST API** – Used to fetch and display random programming facts as an example of basic data handling.
+### HTML
+
+HTML is used to structure the content of the website and organize the page into logical sections such as navigation, hero, projects, and contact.
+
+### CSS
+
+CSS is responsible for visual styling and layout. It is used to implement:
+
+- Page layout and spacing
+- Flexbox alignment
+- Responsive design
+- Hover effects and transitions
+- Light and dark theme styling
+
+### JavaScript
+
+JavaScript provides interactive functionality including:
+
+- Dark mode toggle
+- Theme persistence using `localStorage`
+- Project search and filtering
+- Project sorting
+- Expandable project descriptions
+- Contact form validation
+- Fetching data from an external API
+
+### Wikipedia REST API
+
+The **Wikipedia REST API** is used to fetch and display a random programming fact.  
+This demonstrates asynchronous data handling using JavaScript's `fetch()` function.
 
 ---
 
 ## 3. Website Structure
 
-The website is divided into several main sections:
+The website is organized into several main sections.
 
 ### Navigation Bar
-- Fixed at the top of the page for easy navigation.
-- Contains links to the **About**, **Projects**, and **Contact** sections.
-- Includes a **theme toggle button** that allows users to switch between light and dark mode.
+
+The navigation bar is fixed at the top of the page and provides quick access to the major sections of the website.
+
+Features include:
+
+- Links to **About**, **Projects**, and **Contact**
+- Smooth navigation between sections
+- A **theme toggle button** for switching between light and dark mode
+
+---
 
 ### Hero Section
-- Displays the name and a short introduction.
-- Includes a dynamic greeting message based on the current time of day.
-- Acts as the main entry point of the portfolio.
+
+The hero section serves as the introduction to the portfolio.
+
+It includes:
+
+- Developer name
+- Short introduction
+- A **dynamic greeting message** based on the current time of day (morning, afternoon, evening)
+
+---
 
 ### Random Tech Fact Section
-- Displays a random programming fact retrieved from the Wikipedia API.
-- A button allows the user to generate a new fact.
-- Demonstrates basic API usage and asynchronous JavaScript.
+
+This section demonstrates API integration.
+
+Features include:
+
+- A button that generates a random programming fact
+- Data fetched from the **Wikipedia API**
+- A loading message displayed while retrieving data
+- Error handling if the API request fails
+
+---
 
 ### About Section
-- Provides a short description about the developer.
-- Designed with a simple and readable layout.
+
+The About section provides a short description of the developer and highlights interests and goals.
+
+The layout is designed to remain simple and readable.
+
+---
 
 ### Projects Section
-- Displays project cards representing academic projects.
-- Each card includes:
-  - Project image
-  - Project title
-  - Expandable project description
-- Cards can expand to reveal additional information.
-- Includes additional interaction features:
-  - **Project search** to filter projects by name.
-  - **Project sorting** (A → Z or Z → A).
-- Uses **Flexbox** for layout and responsive behavior.
+
+The projects section displays academic work using **interactive project cards**.
+
+Each project card includes:
+
+- Project image
+- Project title
+- Expandable project description
+
+#### Expandable Project Cards
+
+Project descriptions are hidden by default and expand when the project title is clicked.  
+JavaScript dynamically adjusts the height of the description using `scrollHeight` and CSS transitions to create a smooth expansion animation.
+
+#### Project Search
+
+A search input allows users to filter projects by title.
+
+Features include:
+
+- Real-time filtering using JavaScript
+- Case-insensitive search
+- Hiding projects that do not match the search query
+- Displaying a **"No projects found"** message when no results match the search
+
+#### Project Sorting
+
+Projects can be sorted alphabetically using a dropdown menu.
+
+Sorting options include:
+
+- **Default order**
+- **A → Z**
+- **Z → A**
+
+Sorting is implemented by comparing project titles and dynamically rearranging project cards in the DOM.
+
+---
 
 ### Contact Section
-- Includes a simple contact form.
-- JavaScript validates that all fields are filled and that the email address is in a valid format.
-- Displays feedback messages when the form is submitted.
-- The form currently demonstrates front-end validation only and does not connect to a backend service.
+
+The contact section includes a form that allows users to send a message.
+
+The form contains:
+
+- Name input field
+- Email input field
+- Message textarea
+- Submit button
+
+#### Form Validation
+
+JavaScript performs client-side validation before submission.
+
+Validation checks include:
+
+- Ensuring all fields are filled
+- Verifying the email format using a regular expression
+
+If validation fails, an **error message** is displayed to the user.  
+If the form passes validation, a **success message** confirms that the message was sent.
+
+Currently the form demonstrates **front-end validation only** and does not connect to a backend service.
 
 ---
 
 ## 4. Responsive Design
 
-Responsiveness is implemented using modern CSS techniques.
+Responsive design ensures the website works well on different screen sizes.
 
-- **Flexbox** is used for layout alignment and spacing.
-- **Media queries** (`@media (max-width: 768px)`) adjust the layout for smaller screens.
-- On mobile devices:
-  - Project cards switch from horizontal layout to vertical stacking.
-  - Images automatically resize to fit the screen width.
-  - Text remains readable and well-spaced.
+### Flexbox
 
-These adjustments ensure the website remains usable across desktops, tablets, and mobile devices.
+Flexbox is used for aligning elements and structuring layouts such as project cards and navigation elements.
+
+### Media Queries
+
+The following media query is used to adjust layouts for smaller screens:
+
+```css
+@media (max-width: 768px)
+```
+
+When the screen width is below **768px**:
+
+- Project cards switch from horizontal layout to vertical layout
+- Images expand to fit the screen width
+- Text spacing adjusts for better readability
+
+These changes allow the website to function properly on desktops, tablets, and mobile devices.
 
 ---
 
 ## 5. Dark Mode Implementation
 
-Dark mode is implemented through a combination of CSS and JavaScript.
+Dark mode allows users to switch between light and dark themes.
 
-- A **theme toggle button** allows the user to switch between light and dark themes.
-- JavaScript adds or removes a `dark` class from the `<body>` element.
-- CSS uses more specific selectors (e.g., `body.dark .navbar`) to override default styles when dark mode is active.
-- The selected theme is saved using the browser's **localStorage** API so that the user's preference persists after refreshing or reopening the page.
-- The script runs after the DOM loads using `document.addEventListener("DOMContentLoaded")`.
+Implementation details include:
+
+- A theme toggle button in the navigation bar
+- JavaScript adds or removes a `dark` class on the `<body>` element
+- CSS selectors such as `body.dark .navbar` override default styles
+
+### Theme Persistence
+
+The selected theme is stored using the browser's **localStorage API**.
+
+Example values stored in localStorage:
+
+```
+theme = "dark"
+theme = "light"
+```
+
+When the page loads, JavaScript checks the stored theme preference and applies the correct theme automatically.
+
+The script initializes after the DOM loads using:
+
+```javascript
+document.addEventListener("DOMContentLoaded")
+```
 
 ---
 
 ## 6. Performance Considerations
 
-Several simple practices were applied to keep the website lightweight and efficient.
+Several practices were applied to keep the website lightweight and efficient.
 
-- No external JavaScript frameworks were used.
-- CSS and JavaScript files are organized and minimal.
-- Images are stored locally to ensure reliable loading.
-- The website avoids unnecessary libraries to keep load times low.
-- Code is structured and commented to maintain readability and maintainability.
+These include:
 
----
+- Avoiding heavy front-end frameworks
+- Keeping JavaScript minimal and focused
+- Organizing CSS and JavaScript files clearly
+- Storing images locally for reliable loading
+- Avoiding unnecessary external libraries
 
-## 7. Future Improvements
+These decisions help improve performance and maintainability.
 
-Potential improvements for future versions of the portfolio include:
-
-- Adding links to GitHub repositories or live project demos.
-- Improving accessibility (ARIA labels and keyboard navigation).
-- Adding more animations or micro-interactions.
-- Integrating a backend service for the contact form.
-- Deploying the portfolio publicly using platforms such as **GitHub Pages**, **Netlify**, or **Vercel**.
